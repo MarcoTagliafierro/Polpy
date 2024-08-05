@@ -1,8 +1,6 @@
-//
-//  File.swift
-//  
-//
-//  Created by Marco Tagliafierro on 05/08/24.
-//
-
 import Foundation
+
+struct Dependency {
+    var type: DependencyType?
+    var value: Any?
+}

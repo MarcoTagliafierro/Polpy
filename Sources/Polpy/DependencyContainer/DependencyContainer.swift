@@ -1,17 +1,8 @@
 import Foundation
 
-public enum DependencyType {
-    case singletone
-    case unique
-}
-
-public struct Dependency {
-    var type: DependencyType?
-    var value: Any?
-}
-
 public class DependencyContainer {    
     static public let shared = DependencyContainer()
+    
     private var dependencies = [String: Dependency]()
     
     private init() { }
