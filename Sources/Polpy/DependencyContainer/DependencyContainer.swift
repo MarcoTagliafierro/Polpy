@@ -1,22 +1,22 @@
 import Foundation
 
-class DependencyContainer {
-    enum DependencyType {
-        case singletone
-        case unique
-    }
-    
-    struct Dependency {
-        var type: DependencyType?
-        var value: Any?
-    }
-    
-    static let shared = DependencyContainer()
+public enum DependencyType {
+    case singletone
+    case unique
+}
+
+public struct Dependency {
+    var type: DependencyType?
+    var value: Any?
+}
+
+public class DependencyContainer {    
+    static public let shared = DependencyContainer()
     private var dependencies = [String: Dependency]()
     
     private init() { }
     
-    func register<T: AnyObject>(
+    public func register<T: AnyObject>(
         type: T.Type,
         of dependencyType: DependencyType,
         initMethod: @escaping () -> T
@@ -36,7 +36,7 @@ class DependencyContainer {
         dependencies[typeName] = dependency
     }
     
-    func resolve<T>(
+    public func resolve<T>(
         type: T.Type
     ) -> T? {
         let typeName = String(describing: type)
